@@ -3,7 +3,8 @@ import * as ReactDOMClient from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+// import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 
 const container = document.getElementById('root');
 
@@ -12,9 +13,9 @@ const root = ReactDOMClient.createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <Router basename="/">
       <App />
-    </BrowserRouter>
+    </Router>
   </React.StrictMode>
 );
 
