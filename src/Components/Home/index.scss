@@ -24,7 +24,7 @@
         font-size: 21px;
         font-weight: 300;
         color: #ffd700;
-        opacity: 0.5;
+        opacity: 0.5 !important;
         animation: fadeIn 1.7s backwards;
       }
 
@@ -36,7 +36,7 @@
         color: #ffd700;
         margin-top: 21px;
         margin-left: 21px;
-        opacity: 0.5;
+        opacity: 0.5 !important;
         animation: fadeIn 1.7s backwards;
       }
 
@@ -80,7 +80,6 @@
 
   .logo-container {
     display: block;
-    // opacity: 0;
     z-index: 0;
     position: absolute;
     top: 0;
@@ -109,6 +108,5 @@
   }
   .hover-animate:hover {
     transform: translateZ(10px) rotateZ(20deg) rotateY(30deg);
-    // rotateZ(30deg);
   }
 }

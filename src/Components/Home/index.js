@@ -12,18 +12,16 @@ const Home = () => {
     setTimeout(() => {
       setLetterClass('text-animate-hover');
       setLogoClass('hover-animate');
-    }, 3000);
+    }, 4500);
   }, []);
   return (
     <>
       <div className="container home-page">
         <div className="text-zone">
           <h1>
-            {/* <span className="text-animate">Hi,</span> */}
-            <AnimatedLetters letterClass={letterClass} word={'Hi,'} idx={1} />
+            <AnimatedLetters letterClass={letterClass} word={'Hi,'} idx={11} />
             <br />
-            <AnimatedLetters letterClass={letterClass} word={"I'm "} idx={4} />
-            {/* <span>I'm Yogendra,</span> */}
+            <AnimatedLetters letterClass={letterClass} word={"I'm "} idx={14} />
             <img
               className={logoClass}
               src={LogoY}
@@ -32,14 +30,14 @@ const Home = () => {
             <AnimatedLetters
               letterClass={letterClass}
               word={'ogendra,'}
-              idx={8}
+              idx={18}
             />
             <br />
-            {/* <span>Software Developer.</span> */}
+
             <AnimatedLetters
               letterClass={letterClass}
               word={'Software Developer.'}
-              idx={17}
+              idx={27}
             />
           </h1>
           <h2>Front-end / Back-end / Full-stack</h2>
