@@ -1,84 +1,78 @@
-import { Link, NavLink } from 'react-router-dom';
-import './index.scss';
-import LogoY from '../../assets/images/Y_image.png';
-import Name from '../../assets/images/name1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faHome, faUser } from '@fortawesome/free-solid-svg-icons';
-import {
-  faFacebook,
-  faGithub,
-  faInstagram,
-  faLinkedin,
-  faWhatsapp,
-} from '@fortawesome/free-brands-svg-icons';
+import { useEffect, useRef, useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import Name from '../../assets/images/name1.png';
+import LogoY from '../../assets/images/Y_image.png';
+import { NAV_LIST, SOCIAL_LIST } from '../../utils/constants';
+import useDeviceType from '../../utils/useDeviceType';
+import './index.scss';
 
 const SideBar = () => {
+  const deviceType = useDeviceType();
+  const [device, setDevice] = useState(deviceType);
+  const [isMenuOpen, setIsMenuOpen] = useState('menu-closed');
+  const checkBox = useRef();
+
+  useEffect(() => {
+    setDevice(deviceType);
+  }, [deviceType]);
+
+  const handleMenuClick = (e) => {
+    if (e?.currentTarget?.checked) {
+      setIsMenuOpen('menu-open');
+    } else {
+      setIsMenuOpen('menu-closed');
+    }
+  };
+  const handleLinkClick = (e) => {
+    checkBox.current.checked = false;
+    setIsMenuOpen('menu-closed');
+  };
   return (
-    <div className="nav-bar">
+    <div className={`nav-bar ${device} ${isMenuOpen}`}>
       <Link className="logo" to="/">
         <img src={LogoY} alt="Logo" />
-        <img className="sub-logo" src={Name} alt="slobodan" />
+        <img className="sub-logo" src={Name} alt="Yogendra" />
       </Link>
 
+      <label className="mob-menu">
+        <input
+          name="menu-check"
+          type="checkbox"
+          ref={checkBox}
+          value={isMenuOpen === 'menu-closed'}
+          onChange={handleMenuClick}
+        />
+        <span className="menu">
+          <span className="hamburger"></span>
+        </span>
+      </label>
+
       <nav>
-        <NavLink activeclassname="active" exact="true" to="/">
-          <FontAwesomeIcon icon={faHome} />
-        </NavLink>
-
-        <NavLink activeclassname="active" className="about-link" to="/about">
-          <FontAwesomeIcon icon={faUser} color="#4d4d4e" />
-        </NavLink>
-
-        <NavLink
-          activeclassname="active"
-          className="contact-link"
-          to="/contact"
-        >
-          <FontAwesomeIcon icon={faEnvelope} color="#4d4d4e" />
-        </NavLink>
+        {NAV_LIST &&
+          NAV_LIST.map((nav) => (
+            <NavLink
+              key={nav.id}
+              activeclassname="active"
+              className={nav.class}
+              exact="true"
+              to={nav.linkTo}
+              onClick={handleLinkClick}
+            >
+              <FontAwesomeIcon icon={nav.icon} />
+            </NavLink>
+          ))}
       </nav>
+      <span className="divider"></span>
       <ul>
-        <li>
-          <a
-            href="https://linkedin.com/in/yogendra-dikhit"
-            rel="noreferrer"
-            target="_blank"
-          >
-            <FontAwesomeIcon icon={faLinkedin} color="#4d4d4e" />
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://github.com/yogendra-dikhit"
-            rel="noreferrer"
-            target="_blank"
-          >
-            <FontAwesomeIcon icon={faGithub} color="#4d4d4e" />
-          </a>
-        </li>
-        <li>
-          <a href="https://wa.me/917489990973" rel="noreferrer" target="_blank">
-            <FontAwesomeIcon icon={faWhatsapp} color="#4d4d4e" />
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://fb.com/yogendra.dikhit.9"
-            rel="noreferrer"
-            target="_blank"
-          >
-            <FontAwesomeIcon icon={faFacebook} color="#4d4d4e" />
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://instagram.com/yogendra.dikhit.9"
-            rel="noreferrer"
-            target="_blank"
-          >
-            <FontAwesomeIcon icon={faInstagram} color="#4d4d4e" />
-          </a>
-        </li>
+        {SOCIAL_LIST &&
+          SOCIAL_LIST.map((social) => (
+            <li key={social.id}>
+              <a href={social.linkTo} rel="noreferrer" target="_blank">
+                <FontAwesomeIcon icon={social.icon} color="#4d4d4e" />
+              </a>
+            </li>
+          ))}
       </ul>
     </div>
   );

@@ -2,6 +2,13 @@
   width: 100%;
   height: 100%;
   position: absolute;
+  overflow: hidden;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently */
 }
 
 .tags {
@@ -115,4 +122,160 @@
       color: #fff;
     }
   }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .page {
+    right: 0;
+    height: 90vh;
+    bottom: 0;
+  }
+
+  .home-page {
+    .logo-container {
+      z-index: -1;
+      width: 40%;
+      height: 30%;
+      top: auto;
+      right: -10px;
+      bottom: 50px;
+      transform: translateX(-90%);
+
+      img {
+        height: 45vh;
+        width: 50vh;
+        transform: rotate(-25deg);
+        -webkit-transition: 1.5s ease-in-out;
+        transition: 1.5s ease-in-out;
+        transition-property: all;
+      }
+    }
+    .text-zone {
+      left: 10%;
+      top: 30vh;
+      width: fit-content;
+
+      & h1 {
+        font-size: 40px;
+        line-height: 40px;
+
+        &:after {
+          position: absolute;
+          bottom: 50px;
+          right: 10px;
+        }
+      }
+
+      & h2 {
+        font-size: 14px;
+        letter-spacing: 1px;
+        margin-top: 20px;
+      }
+      & .flat-btn {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .about-page {
+    .text-zone {
+      width: 100% !important;
+      transform: translateY(-100%) !important;
+
+      & h1 {
+        font-size: 40px !important;
+        margin-bottom: 20px !important;
+      }
+
+      p {
+        max-width: 85% !important;
+        margin-left: -10px;
+        font-size: 12px !important;
+      }
+    }
+
+    .cube-container {
+      width: 100%;
+      height: 40%;
+      bottom: 20px;
+      top: auto;
+    }
+  }
+
+  .contact-page {
+    .text-zone {
+      width: 100% !important;
+      transform: translateY(-60%) !important;
+      top: 48% !important;
+
+      & h1 {
+        font-size: 40px !important;
+      }
+
+      p {
+        max-width: 85% !important;
+        margin-left: -10px;
+        font-size: 12px !important;
+      }
+
+      .contact-form {
+        ul {
+          width: 80%;
+          input:is([type='text'], [type='email']) {
+            height: 40px;
+            font-size: 12px;
+          }
+          textarea {
+            min-height: 80px;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    .map-info {
+      position: absolute;
+      bottom: 20px;
+      right: 10px;
+      top: auto;
+      width: 28%;
+      font-size: 10px;
+      padding: 10px;
+      span {
+        font-size: 8px;
+      }
+    }
+    .map-container {
+      width: 95%;
+      height: 25%;
+      position: absolute;
+      top: auto;
+      bottom: 20px;
+      right: 10px;
+    }
+  }
+
+  .tags {
+    left: 35px;
+  }
+  .top-tag {
+    top: 2%;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
 }
